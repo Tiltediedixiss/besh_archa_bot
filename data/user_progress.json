@@ -1,0 +1,234 @@
+{
+  "start_date": "2025-08-10",
+  "current_day": 1,
+  "completed_modules": [
+    "Легенда компании"
+  ],
+  "day_progress": {
+    "day_1": {
+      "status": "available",
+      "completed_modules": [
+        "Легенда компании"
+      ],
+      "started_at": "2025-08-10T14:34:21.799884"
+    },
+    "day_2": {
+      "status": "available",
+      "completed_modules": [],
+      "started_at": "2025-08-10T14:34:31.492374"
+    },
+    "day_3": {
+      "status": "available",
+      "completed_modules": [],
+      "started_at": "2025-08-10T14:34:31.492374"
+    },
+    "day_4": {
+      "status": "available",
+      "completed_modules": [],
+      "started_at": "2025-08-10T14:34:31.492374"
+    }
+  },
+  "2092094721": {
+    "start_date": "2025-08-10",
+    "current_day": 1,
+    "completed_modules": [
+      "Современная история",
+      "Приветствие от CEO",
+      "Легенда компании",
+      "Корпоративные ценности",
+      "Корпоративные компетенции",
+      "Вводный инструктаж",
+      "Кодекс корпоративной этики",
+      "Брендбук",
+      "Отзыв об адаптации",
+      "Новости и события",
+      "Важные документы",
+      "Реферальная программа",
+      "Видеоинструктаж",
+      "Памятка 10 правил",
+      "FAQ и контакты"
+    ],
+    "day_progress": {
+      "day_1": {
+        "status": "completed",
+        "completed_modules": [
+          "Современная история",
+          "Приветствие от CEO",
+          "Легенда компании"
+        ],
+        "started_at": "2025-08-10T14:34:31.492374"
+      },
+      "day_2": {
+        "status": "completed",
+        "completed_modules": [
+          "Корпоративные ценности",
+          "Корпоративные компетенции",
+          "Вводный инструктаж"
+        ],
+        "started_at": "2025-08-10T18:15:45.756278"
+      },
+      "day_3": {
+        "status": "completed",
+        "completed_modules": [
+          "Видеоинструктаж",
+          "Памятка 10 правил",
+          "FAQ и контакты"
+        ],
+        "started_at": "2025-08-10T18:17:14.127679"
+      },
+      "day_4": {
+        "status": "completed",
+        "completed_modules": [
+          "Кодекс корпоративной этики",
+          "Брендбук",
+          "Отзыв об адаптации",
+          "Новости и события",
+          "Важные документы",
+          "Реферальная программа"
+        ],
+        "started_at": "2025-08-10T18:46:29.184392"
+      }
+    },
+    "username": "tiltediedixiss",
+    "first_name": "arnat."
+  },
+  "1128446527": {
+    "start_date": "2025-08-10",
+    "current_day": 1,
+    "completed_modules": [
+      "Легенда компании",
+      "Приветствие от CEO",
+      "Современная история"
+    ],
+    "day_progress": {
+      "day_1": {
+        "status": "completed",
+        "completed_modules": [
+          "Легенда компании",
+          "Приветствие от CEO",
+          "Современная история"
+        ],
+        "started_at": "2025-08-10T15:05:45.518471"
+      },
+      "day_2": {
+        "status": "available",
+        "completed_modules": [],
+        "started_at": "2025-08-10T16:20:38.917596"
+      },
+      "day_3": {
+        "status": "locked",
+        "completed_modules": [],
+        "started_at": null
+      },
+      "day_4": {
+        "status": "locked",
+        "completed_modules": [],
+        "started_at": null
+      }
+    },
+    "username": "l1ttleoneshome",
+    "first_name": "akzhanar"
+  },
+  "665845499": {
+    "start_date": "2025-08-10",
+    "current_day": 1,
+    "completed_modules": [
+      "Приветствие от CEO",
+      "Легенда компании",
+      "Современная история"
+    ],
+    "day_progress": {
+      "day_1": {
+        "status": "completed",
+        "completed_modules": [
+          "Приветствие от CEO",
+          "Легенда компании",
+          "Современная история"
+        ],
+        "started_at": "2025-08-10T17:04:28.247742"
+      },
+      "day_2": {
+        "status": "available",
+        "completed_modules": [],
+        "started_at": "2025-08-10T17:05:16.710559"
+      },
+      "day_3": {
+        "status": "locked",
+        "completed_modules": [],
+        "started_at": null
+      },
+      "day_4": {
+        "status": "locked",
+        "completed_modules": [],
+        "started_at": null
+      }
+    }
+  },
+  "5259277876": {
+    "start_date": "2025-08-10",
+    "username": "tabitaram",
+    "first_name": "Тabi",
+    "last_name": null,
+    "current_day": 1,
+    "completed_modules": [
+      "Приветствие от CEO",
+      "Легенда компании",
+      "Современная история",
+      "Корпоративные ценности",
+      "Корпоративные компетенции",
+      "Вводный инструктаж",
+      "Видеоинструктаж",
+      "Памятка 10 правил",
+      "FAQ и контакты",
+      "Кодекс корпоративной этики",
+      "Брендбук",
+      "Новости и события",
+      "Важные документы",
+      "Реферальная программа",
+      "Отзыв об адаптации"
+    ],
+    "day_progress": {
+      "day_1": {
+        "status": "completed",
+        "completed_modules": [
+          "Приветствие от CEO",
+          "Легенда компании",
+          "Современная история"
+        ],
+        "started_at": "2025-08-10T18:51:20.502400"
+      },
+      "day_2": {
+        "status": "completed",
+        "completed_modules": [
+          "Корпоративные ценности",
+          "Корпоративные компетенции",
+          "Вводный инструктаж"
+        ],
+        "started_at": "2025-08-10T19:08:20.903297",
+        "completed_at": "2025-08-10T19:22:00.902799"
+      },
+      "day_3": {
+        "status": "completed",
+        "completed_modules": [
+          "Видеоинструктаж",
+          "Памятка 10 правил",
+          "FAQ и контакты"
+        ],
+        "started_at": "2025-08-10T18:53:29.416827",
+        "unlocked_at": "2025-08-11T19:22:00.902799"
+      },
+      "day_4": {
+        "status": "completed",
+        "completed_modules": [
+          "Кодекс корпоративной этики",
+          "Брендбук",
+          "Новости и события",
+          "Важные документы",
+          "Реферальная программа",
+          "Отзыв об адаптации"
+        ],
+        "started_at": "2025-08-10T18:53:59.246722"
+      }
+    }
+  }
+}

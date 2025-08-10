@@ -1,0 +1,18 @@
+[Unit]
+Description=Besh Archa Telegram Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Замените пользователя и путь на свои
+User=bot
+WorkingDirectory=/opt/besh_archa_bot
+Environment=PYTHONUNBUFFERED=1
+Environment=TZ=UTC
+ExecStart=/opt/besh_archa_bot/.venv/bin/python main.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
