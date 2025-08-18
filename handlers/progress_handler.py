@@ -22,8 +22,7 @@ def register_progress(dp: Dispatcher):
         user_id = message.from_user.id
         
         # Проверяем, является ли пользователь админом
-        from main import ADMIN_ID
-        if user_id == ADMIN_ID:
+        if progress_manager.is_admin(user_id):
             progress_manager.reset_user_progress(user_id)
             await message.reply("✅ Прогресс пользователя сброшен. Теперь можно начать заново.")
         else:

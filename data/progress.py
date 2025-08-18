@@ -5,8 +5,16 @@ from typing import Dict, List, Optional, Any
 
 PROGRESS_FILE = "data/user_progress.json"
 
-# ID администратора (замените на ваш реальный Telegram ID)
-ADMIN_ID = 2092094721  # Замените на ваш ID
+# Список администраторов (можно расширять). Значение из ENV `ADMIN_ID` также учитывается.
+# Основной админ и дополнительные ID:
+ADMIN_IDS = {2092094721, 478081968}
+# Если передан ENV ADMIN_ID — добавляем его в список админов
+try:
+    _env_admin = os.getenv("ADMIN_ID")
+    if _env_admin and str(_env_admin).isdigit():
+        ADMIN_IDS.add(int(_env_admin))
+except Exception:
+    pass
 
 class UserProgress:
     def __init__(self):
@@ -200,7 +208,7 @@ class UserProgress:
     
     def is_admin(self, user_id: int) -> bool:
         """Проверяет, является ли пользователь администратором"""
-        return user_id == ADMIN_ID
+        return user_id in ADMIN_IDS
 
     def _refresh_unlocks_in_user_progress(self, user_progress: Dict) -> bool:
         """Проверяет таймеры разблокировки и открывает дни, если время пришло."""
