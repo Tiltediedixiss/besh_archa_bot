@@ -67,7 +67,7 @@ def register_mission(dp: Dispatcher):
     @dp.callback_query_handler(lambda c: c.data == "day2_start")
     async def day2_start(callback_query: types.CallbackQuery):
         await callback_query.message.answer(
-            "Ознаокмься видеороликом о Корпоративных ценностях нашей Компании", reply_markup=values_watch_keyboard()
+            "Ознакомься видеороликом о Корпоративных ценностях нашей Компании", reply_markup=values_watch_keyboard()
         )
 
     @dp.callback_query_handler(lambda c: c.data == "values_video")
@@ -399,8 +399,10 @@ def register_mission(dp: Dispatcher):
     @dp.message_handler(state="waiting_feedback")
     async def day4_feedback_collect(message: types.Message, state: FSMContext):
         # Сохраним в CSV для простоты
-        with open("feedback_day4.csv", "a", newline='', encoding='utf-8') as f:
-            writer = csv.writer(f)
+        # Пишем CSV в UTF-8 с BOM и с разделителем ';' — так Excel на Windows корректно
+        # распознает кириллицу и автоматически разделяет на колонки
+        with open("feedback_day4.csv", "a", newline='', encoding='utf-8-sig') as f:
+            writer = csv.writer(f, delimiter=';')
             writer.writerow([message.from_user.id, message.from_user.full_name, message.text, datetime.now().isoformat()])
         from data.progress import progress_manager
         progress_manager.update_module_progress(message.from_user.id, "Отзыв об адаптации", 4)

@@ -27,6 +27,14 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
+
+async def on_startup(dp):
+    # Отключаем webhook и сбрасываем зависшие обновления, чтобы polling не конфликтовал
+    try:
+        await bot.delete_webhook(drop_pending_updates=True)
+    except Exception:
+        pass
+
 register_start(dp)
 register_legend(dp)
 register_modern_history(dp)
@@ -41,4 +49,4 @@ register_progress(dp)
 register_excel_export(dp)
 
 if __name__ == "__main__":
-    executor.start_polling(dp, skip_updates=True) 
+    executor.start_polling(dp, skip_updates=True, on_startup=on_startup)

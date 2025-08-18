@@ -27,6 +27,42 @@ def register_progress(dp: Dispatcher):
             await message.reply("✅ Прогресс пользователя сброшен. Теперь можно начать заново.")
         else:
             await message.reply("❌ У вас нет прав для сброса прогресса.")
+
+    @dp.message_handler(commands=['wipe_all_data'])
+    async def wipe_all_data(message: types.Message):
+        """Полная очистка данных: прогресс и отзывы (только для админов)."""
+        user_id = message.from_user.id
+        if not progress_manager.is_admin(user_id):
+            await message.reply("❌ У вас нет прав для этой операции.")
+            return
+
+        errors = []
+        # Очищаем прогресс
+        try:
+            from data.progress import PROGRESS_FILE
+            with open(PROGRESS_FILE, 'w', encoding='utf-8') as f:
+                f.write('{}')
+        except Exception as e:
+            errors.append(f"progress: {e}")
+
+        # Очищаем отзывы
+        try:
+            with open('feedback_day4.csv', 'w', encoding='utf-8-sig') as f:
+                f.write('')
+        except Exception as e:
+            errors.append(f"feedbacks: {e}")
+
+        # Очищаем прочие вспомогательные CSV (если есть)
+        try:
+            with open('mission_ack.csv', 'w', encoding='utf-8-sig') as f:
+                f.write('')
+        except Exception:
+            pass
+
+        if errors:
+            await message.reply("⚠️ Очистка выполнена частично: " + ", ".join(errors))
+        else:
+            await message.reply("✅ Все данные очищены: прогресс и отзывы.")
     
     @dp.message_handler(commands=['check_admin'])
     async def check_admin(message: types.Message):

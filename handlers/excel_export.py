@@ -46,6 +46,50 @@ def register_excel_export(dp: Dispatcher):
         except Exception as e:
             await message.answer(f"❌ Ошибка при экспорте данных: {str(e)}")
     
+    @dp.message_handler(commands=["clean_reports"])
+    async def clean_reports_command(message: types.Message):
+        """Удаляет все временные XLSX из папки reports (только для админов)."""
+        user_id = message.from_user.id
+        if not progress_manager.is_admin(user_id):
+            await message.answer("❌ У вас нет прав для этой операции.")
+            return
+
+        reports_dir = "reports"
+        if not os.path.isdir(reports_dir):
+            await message.answer("📁 Папка reports отсутствует — очищать нечего.")
+            return
+
+        removed = 0
+        for name in os.listdir(reports_dir):
+            if name.lower().endswith(".xlsx"):
+                path = os.path.join(reports_dir, name)
+                try:
+                    os.remove(path)
+                    removed += 1
+                except Exception:
+                    pass
+
+        await message.answer(f"🧹 Удалено файлов: {removed}")
+
+    @dp.message_handler(commands=["export_feedbacks"])
+    async def export_feedbacks_command(message: types.Message):
+        """Отправляет файл feedback_day4.csv администраторам."""
+        user_id = message.from_user.id
+        if not progress_manager.is_admin(user_id):
+            await message.answer("❌ У вас нет прав для экспорта. Команда доступна только администраторам.")
+            return
+
+        csv_path = "feedback_day4.csv"
+        if not os.path.exists(csv_path) or os.path.getsize(csv_path) == 0:
+            await message.answer("📭 Отзывы отсутствуют: файл feedback_day4.csv пуст или не найден.")
+            return
+
+        try:
+            with open(csv_path, 'rb') as f:
+                await message.answer_document(f, caption="Отзывы пользователей (CSV)")
+        except Exception as e:
+            await message.answer(f"❌ Не удалось отправить файл: {str(e)}")
+
     @dp.message_handler(commands=["progress_stats"])
     async def progress_stats_command(message: types.Message):
         """Обработчик команды /progress_stats для просмотра статистики"""

@@ -53,23 +53,13 @@ class ExcelExporter:
     def _create_main_progress_sheet(self, writer: pd.ExcelWriter, data: List[Dict[str, Any]]):
         """Создает основной лист с прогрессом пользователей"""
         if not data:
-            # Создаем заглушку для демонстрации
-            df = pd.DataFrame({
-                'User ID': [123456789, 987654321],
-                'Username': ['user1', 'user2'],
-                'First Name': ['Иван', 'Мария'],
-                'Last Name': ['Иванов', 'Петрова'],
-                'Current Day': [1, 2],
-                'Day 1 Status': ['completed', 'completed'],
-                'Day 2 Status': ['locked', 'in_progress'],
-                'Day 3 Status': ['locked', 'locked'],
-                'Day 4 Status': ['locked', 'locked'],
-                'Total Modules Completed': [3, 4],
-                'Last Activity': ['2024-01-15 10:30', '2024-01-15 14:20'],
-                'Is Admin': [False, False]
-            })
+            # Пустой отчет без демонстрационных данных
+            df = pd.DataFrame(columns=[
+                'User ID', 'Username', 'First Name', 'Last Name', 'Current Day',
+                'Day 1 Status', 'Day 2 Status', 'Day 3 Status', 'Day 4 Status',
+                'Total Modules Completed', 'Last Activity', 'Is Admin'
+            ])
         else:
-            # Используем реальные данные
             df = pd.DataFrame(data)
         
         df.to_excel(writer, sheet_name='Основной прогресс', index=False)
@@ -83,18 +73,11 @@ class ExcelExporter:
         modules_data = progress_manager.get_modules_detail_data()
         
         if not modules_data:
-            # Создаем заглушку для демонстрации
-            df = pd.DataFrame({
-                'User ID': [123456789, 123456789, 123456789, 987654321, 987654321],
-                'Username': ['user1', 'user1', 'user1', 'user2', 'user2'],
-                'Day': [1, 1, 1, 1, 2],
-                'Module': ['Приветствие от CEO', 'Легенда компании', 'Современная история', 'Приветствие от CEO', 'Миссия и ценности'],
-                'Status': ['completed', 'completed', 'completed', 'completed', 'in_progress'],
-                'Completion Date': ['2024-01-15 09:15', '2024-01-15 09:45', '2024-01-15 10:30', '2024-01-15 14:00', '2024-01-15 14:20'],
-                'Time Spent (min)': [5, 15, 10, 5, 8]
-            })
+            df = pd.DataFrame(columns=[
+                'User ID', 'Username', 'Day', 'Module', 'Status',
+                'Completion Date', 'Time Spent (min)'
+            ])
         else:
-            # Используем реальные данные
             df = pd.DataFrame(modules_data)
         
         df.to_excel(writer, sheet_name='Детали по модулям', index=False)
@@ -108,18 +91,11 @@ class ExcelExporter:
         days_stats = progress_manager.get_days_statistics()
         
         if not days_stats:
-            # Создаем заглушку для демонстрации
-            df = pd.DataFrame({
-                'Day': [1, 2, 3, 4],
-                'Total Users': [2, 1, 0, 0],
-                'Completed': [2, 0, 0, 0],
-                'In Progress': [0, 1, 0, 0],
-                'Locked': [0, 1, 2, 2],
-                'Completion Rate (%)': [100.0, 0.0, 0.0, 0.0],
-                'Average Time (min)': [30.0, 0.0, 0.0, 0.0]
-            })
+            df = pd.DataFrame(columns=[
+                'Day', 'Total Users', 'Completed', 'In Progress', 'Locked',
+                'Completion Rate (%)', 'Average Time (min)'
+            ])
         else:
-            # Используем реальные данные
             df = pd.DataFrame(days_stats)
         
         df.to_excel(writer, sheet_name='Статистика по дням', index=False)
@@ -133,48 +109,8 @@ class ExcelExporter:
         completion_summary = progress_manager.get_completion_summary()
         
         if not completion_summary:
-            # Создаем заглушку для демонстрации
-            summary_data = {
-                'Metric': [
-                    'Общее количество пользователей',
-                    'Пользователи, завершившие День 1',
-                    'Пользователи, завершившие День 2',
-                    'Пользователи, завершившие День 3',
-                    'Пользователи, завершившие День 4',
-                    'Пользователи, завершившие всю программу',
-                    'Среднее время прохождения Дня 1',
-                    'Среднее время прохождения всей программы',
-                    'Процент отсева после Дня 1',
-                    'Процент отсева после Дня 2'
-                ],
-                'Value': [
-                    2,
-                    2,
-                    0,
-                    0,
-                    0,
-                    0,
-                    '30 мин',
-                    '0 мин',
-                    '0%',
-                    '0%'
-                ],
-                'Notes': [
-                    'Активные пользователи в системе',
-                    '100% пользователей',
-                    'Пока никто не начал',
-                    'День заблокирован',
-                    'День заблокирован',
-                    'Пока никто не завершил',
-                    'Включая все модули',
-                    'Пока не применимо',
-                    'Все пользователи продолжают',
-                    'Все пользователи продолжают'
-                ]
-            }
-            df = pd.DataFrame(summary_data)
+            df = pd.DataFrame(columns=['Metric', 'Value', 'Notes'])
         else:
-            # Используем реальные данные
             df = pd.DataFrame(completion_summary)
         
         df.to_excel(writer, sheet_name='Сводка по завершению', index=False)
